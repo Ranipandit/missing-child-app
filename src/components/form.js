@@ -23,6 +23,11 @@ class Form extends Component {
 
         }
     }
+    dataChange = (event) => {
+        this.setState({
+            [event.target.name] : event.target.value
+        })
+    }
     render() {
         return(
             <div className="form">
