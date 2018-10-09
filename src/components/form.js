@@ -28,12 +28,24 @@ class Form extends Component {
             [event.target.name] : event.target.value
         })
     }
+
+    postData = (event) => {
+        event.preventDefault()
+    }
+
+    loadOrShowMsg = () => {
+        if (this.state.loading) {
+            return <p>Loading</p>
+        }else {
+            return <p>{this.state.message}</p>
+        }
+    }
     render() {
         return(
             <div className="form">
                 <img src={Image} className="profile" />
                 <h1>Submit Form</h1>
-                <form>
+                <form onSubmit={this.postData} >
                     <div className="form-group">
                         <label>FirstName</label>
                         <input type="text" name="firstname" className="form-control" id="firstname"
@@ -88,6 +100,8 @@ class Form extends Component {
                         <button>Submit</button>
                     </div>
                     </form>
+
+                    {this.loadOrShowMsg}
             </div>
         )
     }
