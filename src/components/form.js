@@ -31,6 +31,50 @@ class Form extends Component {
 
     postData = (event) => {
         event.preventDefault()
+
+        const firstname = this.state.firstname
+        const lastname = this.state.lastname
+        const mobile = this.state.mobile
+        const emailid = this.state.emailid
+        const password = this.state.password
+        const address = this.state.address
+        const State = this.state.State
+        const city = this.state.city
+        const pincode = this.state.pincode
+        const gender = this.state.gender
+
+        this.setState({
+            loading : true
+        })
+
+        const data = {
+            firstname,
+            lastname,
+            mobile,
+            emailid,
+            password,
+            address,
+            State,
+            city,
+            pincode,
+            gender
+        }
+
+        axios.post('https://missingchild.herokuapp.com/signup', data)
+            .then(response => {
+                console.log(response);
+                this.setState({
+                    loading : false,
+                    message : response.data
+                })
+            }) 
+            .catch(error => {
+                console.log(error);
+                this.setState({
+                    loading : false
+                })
+            })
+
     }
 
     loadOrShowMsg = () => {
