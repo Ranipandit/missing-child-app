@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
 import './App.css';
-import Form from './components/form';
+import { BrowserRouter as Router , Route} from 'react-router-dom';
+import Signup from './components/signup';
+import Home from './components/home';
+import Login from './components/login';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Form />
-      </div>
+    	<Router>
+	      <div className="App">
+	       	<Route path="/home" component={Home} />
+	        <Route exact path='/signup' component={Signup} />
+	        <Route exact path='/login' component={Login} />
+	      </div>
+      	</Router>
     );
   }
 }
