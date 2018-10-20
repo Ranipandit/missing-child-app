@@ -23,6 +23,7 @@ class Login extends Component {
         this.setState({
             redirect : true
         })
+
     }
 
     postData = (event) => {
